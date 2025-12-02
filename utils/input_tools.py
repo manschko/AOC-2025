@@ -1,6 +1,6 @@
 import os
 
-def get_input(day_number, is_example=False):
+def get_input(day_number, is_example=False, split_by='\n', strip=True):
     """Reads the input file for a given day."""
     # ... (rest of the input reading code)
     file_prefix = 'day' + str(day_number).zfill(2)
@@ -9,7 +9,19 @@ def get_input(day_number, is_example=False):
     
     try:
         with open(file_path, 'r') as f:
-            return f.read().splitlines()
+            content = f.read()
+            
+            if split_by is None:
+                return content
+            elif split_by == '\n':
+                result = content.splitlines()
+            else:
+                result = content.split(split_by)
+            
+            if strip:
+                result = [item.strip() for item in result]
+            
+            return result
     except FileNotFoundError:
         print(f"Error: Input file not found at {file_path}")
-        return []
+        return [] if split_by is not None else ""

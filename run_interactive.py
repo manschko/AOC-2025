@@ -69,9 +69,15 @@ def main():
         print(f"Error: Solution file for Day {day} not found.")
         sys.exit(1)
     
-    # Get input data
-    input_data = get_input(day, is_example)
-    if not input_data:
+    # Get input configuration from module if it exists
+    input_config = getattr(day_module, 'INPUT_CONFIG', {})
+    split_by = input_config.get('split_by', '\n')
+    strip = input_config.get('strip', True)
+    
+
+    # Get input data with configuration
+    input_data = get_input(day, is_example, split_by=split_by, strip=strip)
+    if not input_data and input_data != "":
         sys.exit(1)
     
     print(f"\n{'=' * 50}")
