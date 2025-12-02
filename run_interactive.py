@@ -49,9 +49,9 @@ def main():
     
     # Get input type selection
     while True:
-        choice = input("Use example input? (y/n) [default: n]: ").strip().lower()
+        choice = input("Use example input? (y/n) [default: y]: ").strip().lower()
         if not choice:
-            is_example = False
+            is_example = True
             break
         elif choice in ['y', 'yes']:
             is_example = True
