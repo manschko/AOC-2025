@@ -21,8 +21,25 @@ def part_one(data):
     return result
 
 
+#Solved with help of AI
 @time_solver
 def part_two(data):
     result = 0
+    
+    for bank in data:
+        n = len(bank)
+        k = 12
+        
+        stack = []
+        to_remove = n - k  
+        
+        for digit in bank:
+            while stack and stack[-1] < digit and to_remove > 0:
+                stack.pop()
+                to_remove -= 1
+            stack.append(digit)
+        
+        result += int(''.join(stack[:k]))
+    
     return result
 
