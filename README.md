@@ -8,3 +8,6 @@ part 2: 6.424 s
 ### day03
 part 1: 1.822 ms
 part 2: 2.661 ms
+### day04
+part 1: 18.158 ms
+part 2: 441.294 ms
